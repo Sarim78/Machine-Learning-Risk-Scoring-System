@@ -17,7 +17,7 @@
 
 ## Overview
 
-A full end-to-end machine learning pipeline built in Python to predict **credit risk** and **operational risk scores** across financial datasets. The system automates data ingestion, preprocessing, model training, and evaluation, with results surfaced through an explainable Power BI dashboard that makes predictions interpretable for non-technical stakeholders.
+A full end-to-end machine learning pipeline built in Python to predict **credit risk** and **operational risk scores** across financial datasets. The system automates data ingestion, preprocessing, model training, and evaluation with results surfaced through an explainable Power BI dashboard that makes predictions interpretable for non-technical stakeholders.
 
 ---
 
