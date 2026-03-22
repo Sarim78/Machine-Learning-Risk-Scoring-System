@@ -1,23 +1,7 @@
-<div align="center">
-  
-# Machine Learning Risk Scoring System
+# RiskLens
+**ML-powered financial risk scoring with explainable AI**
 
-**End-to-end ML pipeline for credit & operational risk prediction**
-
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat-square&logo=powerbi&logoColor=black)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
-
-</div>
-
----
-
-## Overview
-
-A full end-to-end machine learning pipeline built in Python to predict **credit risk** and **operational risk scores** across financial datasets. The system automates data ingestion, preprocessing, model training, and evaluation with results surfaced through an explainable Power BI dashboard that makes predictions interpretable for non-technical stakeholders.
+An end-to-end machine learning pipeline built in Python to predict credit risk and operational risk scores across financial datasets. The system automates data ingestion, preprocessing, model training, and evaluation with results surfaced through an explainable Power BI dashboard that makes predictions interpretable for non-technical stakeholders.
 
 ---
 
@@ -25,9 +9,9 @@ A full end-to-end machine learning pipeline built in Python to predict **credit 
 
 - **End-to-End ML Pipeline** — Covers raw data ingestion through model output, with no manual handoffs between stages
 - **Dual Risk Scoring** — Predicts both credit risk and operational risk, enabling multi-dimensional financial analysis
-- **Automated Preprocessing & Validation** — SQL + Pandas routines enforce schema validation, outlier handling, and feature engineering, improving data reliability by **25%**
+- **Automated Preprocessing & Validation** — SQL + Pandas routines enforce schema validation, outlier handling, and feature engineering, improving data reliability by 25%
 - **Model Training** — Implements classification and regression models using `scikit-learn` and `TensorFlow`
-- **Explainable AI (XAI)** — Integrates interpretability components so decision-makers can understand model outputs
+- **Explainable AI (XAI)** — Integrates SHAP-based interpretability so decision-makers can understand and trust model outputs
 - **Power BI Dashboard** — Interactive visualizations of risk scores, model confidence, and feature importance
 
 ---
@@ -47,7 +31,7 @@ A full end-to-end machine learning pipeline built in Python to predict **credit 
 ## Project Structure
 
 ```
-Machine-Learning-Risk-Scoring-System/
+RiskLens/
 │
 ├── data/
 │   ├── raw/                  # Raw input datasets
@@ -113,7 +97,7 @@ Power BI Dashboard
 
 ### Prerequisites
 
-```bash
+```
 Python 3.10+
 pip install -r requirements.txt
 ```
@@ -122,8 +106,8 @@ pip install -r requirements.txt
 
 ```bash
 # Clone the repository
-git clone https://github.com/Sarim78/Machine-Learning-Risk-Scoring-System.git
-cd Machine-Learning-Risk-Scoring-System
+git clone https://github.com/Sarim78/RiskLens.git
+cd RiskLens
 
 # Install dependencies
 pip install -r requirements.txt
