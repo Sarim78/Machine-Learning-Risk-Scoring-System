@@ -1,6 +1,6 @@
 # RiskLens
 
-> ⚠️ **Work in Progress** — Project structure is set up. Code implementation is actively in progress.
+> ⚠️ **Work in Progress** --> Project structure is set up. Code implementation is actively in progress.
 
 **ML-powered credit risk scoring with explainable AI**
 
