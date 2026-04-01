@@ -1,18 +1,21 @@
 # RiskLens
-**ML-powered financial risk scoring with explainable AI**
 
-An end-to-end machine learning pipeline built in Python to predict credit risk and operational risk scores across financial datasets. The system automates data ingestion, preprocessing, model training, and evaluation with results surfaced through an explainable Power BI dashboard that makes predictions interpretable for non-technical stakeholders.
+> ⚠️ **Work in Progress** — Project structure is set up. Code implementation is actively in progress.
+
+**ML-powered credit risk scoring with explainable AI**
+
+An end-to-end machine learning pipeline built in Python to predict credit default risk using the German Credit dataset. The system will automate data ingestion, preprocessing, model training, and scoring, with SHAP-based explainability to make predictions interpretable.
 
 ---
 
-## Features
+## Features (Planned)
 
-- **End-to-End ML Pipeline** — Covers raw data ingestion through model output, with no manual handoffs between stages
-- **Dual Risk Scoring** — Predicts both credit risk and operational risk, enabling multi-dimensional financial analysis
-- **Automated Preprocessing & Validation** — SQL + Pandas routines enforce schema validation, outlier handling, and feature engineering, improving data reliability by 25%
-- **Model Training** — Implements classification and regression models using `scikit-learn` and `TensorFlow`
-- **Explainable AI (XAI)** — Integrates SHAP-based interpretability so decision-makers can understand and trust model outputs
-- **Power BI Dashboard** — Interactive visualizations of risk scores, model confidence, and feature importance
+- **End-to-End ML Pipeline** --> Raw data ingestion through scored predictions with no manual handoffs
+- **Credit Risk Classification** --> Predict likelihood of loan default across 1,000 borrower records using 17 features
+- **Automated Preprocessing** --> Encode categorical variables, scale features, and split train/test sets
+- **Model Training** --> Random Forest classifier via `scikit-learn` with accuracy and ROC-AUC evaluation
+- **Explainable AI (XAI)** --> SHAP-based feature importance to surface which factors drive each prediction
+- **SQL Schema** --> SQLite schema for structured storage and querying of raw and scored credit records
 
 ---
 
@@ -21,10 +24,10 @@ An end-to-end machine learning pipeline built in Python to predict credit risk a
 | Layer | Tools |
 |---|---|
 | Language | Python 3.10+ |
-| ML Frameworks | scikit-learn, TensorFlow |
+| ML | scikit-learn |
 | Data Processing | Pandas, SQL |
-| Visualization | Power BI |
-| Explainability | SHAP / feature importance |
+| Explainability | SHAP |
+| Database | SQLite / SQLAlchemy |
 
 ---
 
@@ -34,75 +37,86 @@ An end-to-end machine learning pipeline built in Python to predict credit risk a
 RiskLens/
 │
 ├── data/
-│   ├── raw/                  # Raw input datasets
-│   └── processed/            # Cleaned, validated data
-│
-├── notebooks/
-│   ├── eda.ipynb             # Exploratory data analysis
-│   └── model_experiments.ipynb
+│   └── raw/
+│       └── credit.csv          # German Credit dataset (1,000 records)
 │
 ├── src/
-│   ├── preprocessing.py      # SQL + Pandas data pipeline
-│   ├── features.py           # Feature engineering
-│   ├── model.py              # Model training & evaluation
-│   └── predict.py            # Scoring & inference
+│   ├── __init__.py
+│   ├── preprocessing.py        # Data loading, encoding, scaling
+│   ├── features.py             # Feature selection & engineering
+│   ├── model.py                # Model training & evaluation
+│   └── predict.py              # Scoring & inference
 │
-├── dashboard/
-│   └── risk_dashboard.pbix   # Power BI dashboard file
+├── models/                     # Saved model output (auto-generated on run)
 │
+├── sql/
+│   └── schema.sql              # SQLite schema for credit risk records
+│
+├── main.py                     # Runs the full pipeline end-to-end
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Pipeline Overview
+## Pipeline Overview (Planned)
 
 ```
-Raw Data (SQL)
-     │
-     ▼
-Preprocessing & Validation (Pandas)
-     │  • Schema checks
-     │  • Outlier removal
-     │  • Feature engineering
-     ▼
-Model Training
-     │  • scikit-learn (Logistic Regression, Random Forest, XGBoost)
-     │  • TensorFlow (Neural network risk scorer)
-     ▼
-Risk Score Output
-     │  • Credit Risk Score
-     │  • Operational Risk Score
-     ▼
-Power BI Dashboard
-     │  • Predictions visualization
-     └  • Explainable AI components (SHAP values, feature importance)
+Raw Data (credit.csv)
+        │
+        ▼
+Preprocessing (preprocessing.py)
+        │  • Encode categorical columns
+        │  • Scale numeric features
+        │  • Train/test split
+        ▼
+Feature Engineering (features.py)
+        │  • Feature selection
+        │  • Derived risk indicators
+        ▼
+Model Training (model.py)
+        │  • Random Forest classifier
+        │  • Accuracy + ROC-AUC evaluation
+        ▼
+Risk Score Output (predict.py)
+        │  • Per-record default probability
+        │  • Exported predictions
+        ▼
+Explainability
+           • SHAP feature importance
+           • Risk factor breakdown
 ```
 
 ---
 
-## Results
+## Dataset
 
-| Metric | Value |
-|---|---|
-| Data reliability improvement | +25% |
-| Risk types modeled | Credit & Operational |
-| Dashboard components | Explainable AI-enhanced |
-| Pipeline automation | Fully automated (end-to-end) |
+Uses the [German Credit Dataset](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)) — a widely used benchmark in credit risk ML.
+
+- **1,000 records**, 17 features
+- **Target:** `default` (yes/no)
+- **Class split:** 70% no default, 30% default
+- **Zero null values**
+
+Key features include `checking_balance`, `credit_history`, `months_loan_duration`, `savings_balance`, `employment_duration`, `age`, and `existing_loans_count`.
+
+---
+
+## Roadmap
+
+- [ ] Implement preprocessing pipeline
+- [ ] Implement feature engineering
+- [ ] Train and evaluate Random Forest model
+- [ ] Build prediction & scoring module
+- [ ] Complete SHAP explainability module
+- [ ] Add EDA notebook
+- [ ] Build interactive dashboard (Streamlit or Power BI)
 
 ---
 
 ## Getting Started
 
-### Prerequisites
-
-```
-Python 3.10+
-pip install -r requirements.txt
-```
-
-### Installation
+> ⚠️ Pipeline not yet runnable: implementation in progress.
 
 ```bash
 # Clone the repository
@@ -111,28 +125,13 @@ cd RiskLens
 
 # Install dependencies
 pip install -r requirements.txt
-```
 
-### Run the Pipeline
-
-```bash
-# Preprocess data
-python src/preprocessing.py
-
-# Train the model
-python src/model.py
-
-# Generate risk scores
-python src/predict.py
+# Run the pipeline (once implemented)
+python main.py
 ```
 
 ---
 
-## Dashboard
+## Author
 
-Risk predictions are visualized in a Power BI dashboard (`dashboard/risk_dashboard.pbix`) featuring:
-
-- Credit and operational risk score distributions
-- Per-record prediction confidence
-- Feature importance charts (XAI)
-- Trend analysis over time
+**Sarim Siddiqui** — [sarimsiddiqui.org](https://sarimsiddiqui.org) · [GitHub](https://github.com/Sarim78)
