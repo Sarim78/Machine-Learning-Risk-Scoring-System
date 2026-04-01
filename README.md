@@ -129,9 +129,3 @@ pip install -r requirements.txt
 # Run the pipeline (once implemented)
 python main.py
 ```
-
----
-
-## Author
-
-**Sarim Siddiqui** — [sarimsiddiqui.org](https://sarimsiddiqui.org) · [GitHub](https://github.com/Sarim78)
